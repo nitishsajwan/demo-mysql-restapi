@@ -17,7 +17,7 @@ import java.util.List;
 public class HandlerConfig {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity methodHandlerMethodArgumentNotValidException(MethodArgumentNotValidException ex){
+    public ResponseEntity<Object> methodHandlerMethodArgumentNotValidException(MethodArgumentNotValidException ex){
         BindingResult br=ex.getBindingResult();
         List<FieldError> fieldError=br.getFieldErrors();
         List<String> fieldString=fieldError
