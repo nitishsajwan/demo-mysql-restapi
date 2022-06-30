@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
 
@@ -23,5 +25,15 @@ public class PersonService {
                 .build();
         logger.info("Person Object {}",person);
         personRepository.insertPerson(person);
+    }
+
+
+    public Person getPerson(int id) {
+    }
+
+    public List<Person> getPeople() {
+    }
+
+    public Person deletePerson(int pId) {
     }
 }

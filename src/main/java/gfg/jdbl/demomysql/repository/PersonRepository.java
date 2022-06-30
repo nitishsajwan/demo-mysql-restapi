@@ -4,12 +4,13 @@ import gfg.jdbl.demomysql.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 
 @Repository
-public class PersonRepository {
+public class PersonRepository extends JpaRepository<Person,Integer> {
 
     private static final Logger logger= LoggerFactory.getLogger(PersonRepository.class);
 

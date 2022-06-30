@@ -1,17 +1,17 @@
 package gfg.jdbl.demomysql.controller;
 
 
+import gfg.jdbl.demomysql.model.Person;
 import gfg.jdbl.demomysql.request.CreatePersonRequest;
 import gfg.jdbl.demomysql.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -32,13 +32,35 @@ private static final Logger logger= LoggerFactory.getLogger(PersonController.cla
 
     }*/
 
-    @PostMapping("/person")
+    /*@PostMapping("/person")
     public void createPerson(@RequestBody @Valid CreatePersonRequest createPersonRequest){
         logger.info("createPersonRequest {}",createPersonRequest);
 
         personService.createPerson(createPersonRequest);
 
 
+    }*/
+    @PostMapping("/person")
+    public void createPerson(@Valid @RequestBody CreatePersonRequest createPersonRequest){
+
+        // Validations and Exception handling we have outsourced
+        // Invoking service class' function
+        personService.createPerson(createPersonRequest);
+    }
+
+    @GetMapping("/person")
+    public Person getPersonById(@RequestParam("id") int id){
+        return personService.getPerson(id);
+    }
+
+    @GetMapping("/person/all")
+    public List<Person> getPeople(){
+        return personService.getPeople();
+    }
+
+    @DeleteMapping("/person/{id}")
+    public Person deletePerson(@PathVariable("id") int pId) throws Exception {
+        return personService.deletePerson(pId);
     }
 
 
